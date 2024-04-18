@@ -31,15 +31,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Reco-Farm Application',
-      localizationsDelegates: const [
-        // GlobalCupertinoLocalizations.delegate,
-        // GlobalMaterialLocalizations.delegate,
-        // GlobalWidgetsLocalizations.delegate
-      ],
-      supportedLocales: const [
-        Locale('ko', 'KR'),
-        Locale('en', 'US'),
-      ],
+      // localizationsDelegates: const [
+      //   // GlobalCupertinoLocalizations.delegate,
+      //   // GlobalMaterialLocalizations.delegate,
+      //   // GlobalWidgetsLocalizations.delegate
+      // ],
+      // supportedLocales: const [
+      //   Locale('ko', 'KR'),
+      //   Locale('en', 'US'),
+      // ],
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
 
