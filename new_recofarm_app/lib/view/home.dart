@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:new_recofarm_app/view/login.dart';
 import 'package:new_recofarm_app/view/login_page.dart';
 import 'package:new_recofarm_app/view/mainview.dart';
 
@@ -29,18 +31,15 @@ class Home extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () {
-                // Login Page 
-                Get.to(const LoginPage()) ;
-                
-              },
-              // Get 경로 알아서 하시면 됩니다. home.dart는 스플래시 화면 및 로그인 메뉴로 만들 생각입니다
-              child: const Text('Login 으로 가는 버튼 Test')
-            ),
+                onPressed: () {
+                  // Login Page
+                  Get.to(LoginScreen());
+                },
+                // Get 경로 알아서 하시면 됩니다. home.dart는 스플래시 화면 및 로그인 메뉴로 만들 생각입니다
+                child: const Text('Login 으로 가는 버튼 Test')),
             ElevatedButton(
-              onPressed: () => Get.to(const MainView()),
-              child: const Text('main 화면 가는 button')
-            ),
+                onPressed: () => Get.to(const MainView()),
+                child: const Text('main 화면 가는 button')),
           ],
         ),
       ),
