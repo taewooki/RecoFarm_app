@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:new_recofarm_app/firebase_options.dart';
 import 'view/home.dart';
@@ -31,15 +32,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Reco-Farm Application',
-      // localizationsDelegates: const [
-      //   // GlobalCupertinoLocalizations.delegate,
-      //   // GlobalMaterialLocalizations.delegate,
-      //   // GlobalWidgetsLocalizations.delegate
-      // ],
-      // supportedLocales: const [
-      //   Locale('ko', 'KR'),
-      //   Locale('en', 'US'),
-      // ],
+      localizationsDelegates: const [
+        GlobalCupertinoLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: const [
+        Locale('ko', 'KR'),
+        Locale('en', 'US'),
+      ],
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

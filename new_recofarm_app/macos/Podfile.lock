@@ -959,6 +959,9 @@ PODS:
     - FlutterMacOS
   - Firebase/Analytics (10.24.0):
     - Firebase/Core
+  - Firebase/Auth (10.24.0):
+    - Firebase/CoreOnly
+    - FirebaseAuth (~> 10.24.0)
   - Firebase/Core (10.24.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (~> 10.24.0)
@@ -975,6 +978,11 @@ PODS:
     - FirebaseStorage (~> 10.24.0)
   - firebase_analytics (10.10.2):
     - Firebase/Analytics (= 10.24.0)
+    - firebase_core
+    - FlutterMacOS
+  - firebase_auth (4.19.2):
+    - Firebase/Auth (~> 10.24.0)
+    - Firebase/CoreOnly (~> 10.24.0)
     - firebase_core
     - FlutterMacOS
   - firebase_core (2.30.0):
@@ -1009,6 +1017,13 @@ PODS:
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
     - nanopb (< 2.30911.0, >= 2.30908.0)
   - FirebaseAppCheckInterop (10.24.0)
+  - FirebaseAuth (10.24.0):
+    - FirebaseAppCheckInterop (~> 10.17)
+    - FirebaseCore (~> 10.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
+    - GoogleUtilities/Environment (~> 7.8)
+    - GTMSessionFetcher/Core (< 4.0, >= 2.1)
+    - RecaptchaInterop (~> 100.0)
   - FirebaseAuthInterop (10.24.0)
   - FirebaseCore (10.24.0):
     - FirebaseCoreInternal (~> 10.0)
@@ -1196,6 +1211,7 @@ PODS:
 DEPENDENCIES:
   - cloud_firestore (from `Flutter/ephemeral/.symlinks/plugins/cloud_firestore/macos`)
   - firebase_analytics (from `Flutter/ephemeral/.symlinks/plugins/firebase_analytics/macos`)
+  - firebase_auth (from `Flutter/ephemeral/.symlinks/plugins/firebase_auth/macos`)
   - firebase_core (from `Flutter/ephemeral/.symlinks/plugins/firebase_core/macos`)
   - firebase_database (from `Flutter/ephemeral/.symlinks/plugins/firebase_database/macos`)
   - firebase_storage (from `Flutter/ephemeral/.symlinks/plugins/firebase_storage/macos`)
@@ -1209,6 +1225,7 @@ SPEC REPOS:
     - Firebase
     - FirebaseAnalytics
     - FirebaseAppCheckInterop
+    - FirebaseAuth
     - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseCoreExtension
@@ -1233,6 +1250,8 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/cloud_firestore/macos
   firebase_analytics:
     :path: Flutter/ephemeral/.symlinks/plugins/firebase_analytics/macos
+  firebase_auth:
+    :path: Flutter/ephemeral/.symlinks/plugins/firebase_auth/macos
   firebase_core:
     :path: Flutter/ephemeral/.symlinks/plugins/firebase_core/macos
   firebase_database:
@@ -1250,11 +1269,13 @@ SPEC CHECKSUMS:
   cloud_firestore: 651ce8d312fe07e51e4745d4df813350b39b4f05
   Firebase: 91fefd38712feb9186ea8996af6cbdef41473442
   firebase_analytics: d37df6627654ce5c19db85b11b1cbb0734e9a78b
+  firebase_auth: d07ad5d72e998adb12f2b035a9493b2d4dc380ec
   firebase_core: 15617e716aee891ef3b431cabfa1859261537ecf
   firebase_database: d57d1032c437cf3987f0af3c735a54e820ef72bb
   firebase_storage: fe09298167b119d43204b5b4564e946b4ed9fc70
   FirebaseAnalytics: b5efc493eb0f40ec560b04a472e3e1a15d39ca13
   FirebaseAppCheckInterop: fecc08c89936c8acb1428d8088313aabedb348e4
+  FirebaseAuth: 711d01cccefaf10035b3090a92956d0dd4f99088
   FirebaseAuthInterop: 29336ab84df12fc0f340ba5fe58d3e5811a4192d
   FirebaseCore: 11dc8a16dfb7c5e3c3f45ba0e191a33ac4f50894
   FirebaseCoreExtension: af5fd85e817ea9d19f9a2659a376cf9cf99f03c0
