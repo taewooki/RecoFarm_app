@@ -8,20 +8,12 @@ class NapaCabbageAPI extends GetxController {
   List<Map<String,String>> apiModel = [];
   List<Map<String,String>> yearModel = [];
 
-
-  //
-  late List<YearChart> chartData2 = [
-      YearChart(year: 2020, price: 4000),
-      YearChart(year: 2021, price: 3000),
-      YearChart(year: 2022, price: 2000),
-      YearChart(year: 2023, price: 1000),
-    ];
-
+  late List<YearChart> chartData2 = [];
   
   bool loopStatus = false;
 
   Future<void> fetchXmlData() async {
-    final url = Uri.parse('http://211.237.50.150:7080/openapi/b2c4c81d3e3b685b913bd27e183618c306a179d340cb05593d06ace9746b6270/xml/Grid_20220817000000000620_1/1/10?DATES=20231102&MCLASSNAME=배추');
+    final url = Uri.parse('http://211.237.50.150:7080/openapi/b2c4c81d3e3b685b913bd27e183618c306a179d340cb05593d06ace9746b6270/xml/Grid_20220817000000000620_1/1/10?DATES=20231120&MCLASSNAME=배추');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
