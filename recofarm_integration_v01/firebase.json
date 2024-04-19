@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"ios":{"default":{"projectId":"recofarm","appId":"1:10502704944:ios:f4e28946cc8672a290c2f5","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"recofarm","configurations":{"ios":"1:10502704944:ios:f4e28946cc8672a290c2f5"}}}}}}

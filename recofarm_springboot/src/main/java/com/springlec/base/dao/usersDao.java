@@ -13,8 +13,19 @@ import com.springlec.base.model.usersDto;
 
  */
 public interface usersDao {
-	//  B 에있는 user 조회  DAO 
+	// user 조회  DAO 
 	public List<usersDto> listDao() throws Exception;
+	
+	// user 회원가입 dao 
+	public void userSignUpDao(
+			String userId,
+			String userPw,
+			String userName,
+			String userEmail,
+			String userNickname,
+			String userMobile
+			) throws Exception ;
+	
 	
 	// list.jsp 에서 글쓰기 버튼을 눌렀을때 게시글(insert ). 
 	//public void writeDao(String bName, String bTitle, String bContent) throws Exception;

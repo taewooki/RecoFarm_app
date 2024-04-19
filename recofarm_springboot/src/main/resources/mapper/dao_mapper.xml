@@ -6,12 +6,26 @@
 	Detail 		: !!첫실행시 mapper namspace 수정 할것
 	Date		: 2024.04.19
 	Author 		: Forrest D Park. (pdg)
+	
+	Update 		:
+		2024.04.19 by pdg
+			- select users 로 조회
+			- insert users 기능 추가 
  -->
 <mapper namespace="com.springlec.base.dao.usersDao">
   <!-- *** users table List Dao ***-->
   <select id="listDao" resultType="com.springlec.base.model.usersDto">
     SELECT * FROM users
   </select>
+  
+  
+  <!-- *** Insert signed up users to table  -->
+  <insert id="userSignUpDao">
+  	INSERT INTO 
+  	users (userId, userPw, userName, userEmail, userNickname, userMobile) 
+	VALUES (#{userId}, #{userPw}, #{userName}, #{userEmail}, #{userNickname}, #{userMobile})
+	
+  </insert>
 
 
 </mapper>
