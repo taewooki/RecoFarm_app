@@ -1,10 +1,12 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:new_recofarm_app/model/user_model.dart';
 import 'package:new_recofarm_app/view/detail_cabbageapi.dart';
 import 'package:new_recofarm_app/view/drawer_widget.dart';
+import 'package:new_recofarm_app/view/predict_yield.dart';
 import 'package:new_recofarm_app/vm/napacabbage_price_api.dart';
 import 'package:new_recofarm_app/vm/user_firebase.dart';
 
@@ -61,7 +63,7 @@ class HomeViewPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
                       child: SizedBox(
                         width: 300,
                         height: 400,
@@ -80,7 +82,7 @@ class HomeViewPage extends StatelessWidget {
                                     ),
                                   ),
                                   const Text(
-                                    '님의 관심 작물은?',
+                                    '님의 관심 작물',
                                     style: TextStyle(
                                       fontSize: 20
                                     ),
@@ -103,6 +105,14 @@ class HomeViewPage extends StatelessWidget {
                             ),
                           ],
                         ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 15, 0, 30),
+                      child: Container(
+                        color: Color.fromARGB(255, 222, 216, 216),
+                        width: MediaQuery.of(context).size.width,
+                        height: 5,
                       ),
                     ),
                     Row(
@@ -236,7 +246,75 @@ class HomeViewPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 30, 0, 30),
+                      child: Container(
+                        color: Color.fromARGB(255, 222, 216, 216),
+                        width: MediaQuery.of(context).size.width,
+                        height: 5,
+                      ),
+                    ),
+                    const Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      child: Text(
+                        '수확량 & 배추가격 예측',
+                        style: TextStyle(
+                          fontSize: 23,
+                          fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () => Get.to(PredictYield()),
+                      child: Container(
+                        color: Theme.of(context).colorScheme.tertiaryContainer,
+                        width: 350,
+                        height: 70,
+                        child: const Padding(
+                          padding: EdgeInsets.fromLTRB(0, 0, 25, 0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                '수확량 예측하기',
+                                style: TextStyle(
+                                  fontSize: 20
+                                ),
+                              ),
+                              SizedBox(width: 70),
+                              Icon(Icons.arrow_forward_ios),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 30, 0, 50),
+                      child: GestureDetector(
+                        onTap: () => print('12312312'),
+                        child: Container(
+                          color: Theme.of(context).colorScheme.errorContainer,
+                          width: 350,
+                          height: 70,
+                          child: const Padding(
+                            padding: EdgeInsets.fromLTRB(0, 0, 25, 0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '배추가격 예측하기',
+                                  style: TextStyle(
+                                    fontSize: 20
+                                  ),
+                                ),
+                                SizedBox(width: 60),
+                                Icon(Icons.arrow_forward_ios),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               );

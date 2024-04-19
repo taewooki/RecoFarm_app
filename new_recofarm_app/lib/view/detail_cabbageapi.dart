@@ -29,12 +29,11 @@ class DetailCabbage extends StatefulWidget {
 class _DetailCabbageState extends State<DetailCabbage> {
 
   late DateTime chosenDateTime;
+
   late List<ChartModel> chartData;
+  List<Map<String,double>> chartApiModel = [];
   
   TooltipBehavior tooltipBehavior = TooltipBehavior(enable : true);
-  List<Map<String,double>> chartApiModel = [];
-  // late double minimumY;
-  // late double maximumY;
 
   final NapaCabbageAPI cabbageController = Get.put(NapaCabbageAPI());
 
@@ -43,21 +42,10 @@ class _DetailCabbageState extends State<DetailCabbage> {
     super.initState();
     chosenDateTime = DateTime.now();
     
-    chartData = [
-      ChartModel(date: 20231011, weight: 10000),
-      ChartModel(date: 20231012, weight: 20000),
-      ChartModel(date: 20231013, weight: 30000),
-      ChartModel(date: 20231014, weight: 40000),
-    ];
+    chartData = [];
 
-
-    // minimumY = 0;
-    // maximumY = 40000 + 20000;
     cabbageController.fetchXmlData();
-
-    print('${chosenDateTime.year}${chosenDateTime.month.toString().padLeft(2, '0')}${chosenDateTime.day.toString().padLeft(2,'0')}');
-    // chartXmlData('${chosenDateTime.year}${chosenDateTime.month.toString().padLeft(2, '0')}${chosenDateTime.day.toString().padLeft(2,'0')}');
-
+    cabbageController.yearlySalesList();
   }
 
   @override
@@ -99,53 +87,59 @@ class _DetailCabbageState extends State<DetailCabbage> {
                 ),
               ),
               
-              SfCartesianChart(
-                key: ValueKey(DateTime.now().millisecondsSinceEpoch),  // 데이터가 갱신될 때마다 새로운 키를 생성
-                title: const ChartTitle(
-                  text: '서울가락도매 배추 거래량'
-                ),
-                // 범례
-                legend: const Legend(
-                  isVisible: true,
-                  isResponsive: false,
-                ),
-                tooltipBehavior: tooltipBehavior,
-                series: [
-                  // Series에 따라 차트 모양이 변경된다.
-                  LineSeries<ChartModel, int>(
-                    color: Theme.of(context).colorScheme.primary,
-                    dataSource: chartData,
-                    xValueMapper: (ChartModel developers, _ ) => developers.date,
-                    yValueMapper: (ChartModel developers, _ ) => developers.weight,
-                    // Data의 실제값을 차트에서 나타낸다.
-                    dataLabelSettings: const DataLabelSettings(
-                      isVisible: true,
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+                child: SfCartesianChart(
+                  key: ValueKey(DateTime.now().millisecondsSinceEpoch),  // 데이터가 갱신될 때마다 새로운 키를 생성
+                  title: const ChartTitle(
+                    text: '서울가락도매 배추 거래량'
+                  ),
+                  // 범례
+                  legend: const Legend(
+                    isVisible: true,
+                    isResponsive: false,
+                  ),
+                  tooltipBehavior: tooltipBehavior,
+                  series: [
+                    // Series에 따라 차트 모양이 변경된다.
+                    LineSeries<ChartModel, int>(
+                      color: Theme.of(context).colorScheme.primary,
+                      dataSource: chartData,
+                      xValueMapper: (ChartModel chartModel, _ ) => chartModel.date,
+                      yValueMapper: (ChartModel chartModel, _ ) => chartModel.weight,
+                      // Data의 실제값을 차트에서 나타낸다.
+                      dataLabelSettings: const DataLabelSettings(
+                        isVisible: true,
+                      ),
+                      enableTooltip: true,
+                      legendItemText: '일일 거래량',
                     ),
-                    enableTooltip: true,
-                    legendItemText: '일일 거래량',
+                  ],
+                  // x축을 category로 표현, xlab
+                  primaryXAxis: const CategoryAxis(
+                    title: AxisTitle(
+                      text: '날짜'
+                    ),
                   ),
-                ],
-                // x축을 category로 표현, xlab
-                primaryXAxis: const CategoryAxis(
-                  title: AxisTitle(
-                    text: '날짜'
+                  // y축을 숫자로 표현, ylab
+                  primaryYAxis: const NumericAxis(
+                    title: AxisTitle(
+                      text: '거래량(단위 : t(톤))'
+                    ),
+                    // minimum: minimumY,
+                    // maximum: maximumY,
                   ),
                 ),
-                // y축을 숫자로 표현, ylab
-                primaryYAxis: const NumericAxis(
-                  title: AxisTitle(
-                    text: '거래량(단위 : t(톤))'
-                  ),
-                  // minimum: minimumY,
-                  // maximum: maximumY,
-                ),
+              ),
+              SizedBox(
+                height: 50,
               ),
               GetBuilder<NapaCabbageAPI>(
                 builder: (controller) {
                   return SfCartesianChart(
                 // key: ValueKey(DateTime.now().millisecondsSinceEpoch),  // 데이터가 갱신될 때마다 새로운 키를 생성
                 title: const ChartTitle(
-                  text: '연도별 평균(10kg 그물망) 가격 '
+                  text: '연도별 봄배추(10kg 그물망) 평균 가격 '
                 ),
                 // 범례
                 legend: const Legend(
@@ -182,6 +176,9 @@ class _DetailCabbageState extends State<DetailCabbage> {
                 ),
               );
                 },
+              ),
+              SizedBox(
+                height: 50,
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
@@ -272,10 +269,9 @@ class _DetailCabbageState extends State<DetailCabbage> {
                   ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () => cabbageController.yearlySalesList(),
-                child: const Text('1')
-              )
+              SizedBox(
+                height: 50,
+              ),
             ],
           ),
         ),
