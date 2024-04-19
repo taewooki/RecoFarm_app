@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	Description : Dao mapper 
+	Detail 		: !!첫실행시 mapper namspace 수정 할것
+	Date		: 2024.04.19
+	Author 		: Forrest D Park. (pdg)
+ -->
+<mapper namespace="com.springlec.base.dao.usersDao">
+  <!-- *** users table List Dao ***-->
+  <select id="listDao" resultType="com.springlec.base.model.usersDto">
+    SELECT * FROM users
+  </select>
+
+
+</mapper>
