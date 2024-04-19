@@ -53,6 +53,8 @@ dependencies:
   flutter_map: ^6.1.0
   latlong2: ^0.9.1
   xml: ^6.5.0
+
+  syncfusion_flutter_charts: ^25.1.40
   
   ## Global language setting 
   flutter_localizations:

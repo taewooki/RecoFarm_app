@@ -8,7 +8,7 @@ class NapaCabbageAPI extends GetxController {
   bool loopStatus = false;
 
   Future<void> fetchXmlData() async {
-    final url = Uri.parse('http://211.237.50.150:7080/openapi/b2c4c81d3e3b685b913bd27e183618c306a179d340cb05593d06ace9746b6270/xml/Grid_20220817000000000620_1/1/5?DATES=20231120&MCLASSNAME=배추');
+    final url = Uri.parse('http://211.237.50.150:7080/openapi/b2c4c81d3e3b685b913bd27e183618c306a179d340cb05593d06ace9746b6270/xml/Grid_20220817000000000620_1/1/10?DATES=20231102&MCLASSNAME=배추');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -20,19 +20,23 @@ class NapaCabbageAPI extends GetxController {
       final rootElement = document.rootElement;
       final items = rootElement.findAllElements('row');
 
+      if(items.isEmpty) {
+        return;
+      }
+
       for (final item in items) {
         final date = item.findElements('DATES').single.innerText;
-        final mClassname = item.findElements('MCLASSNAME').single.innerText;
+        final sClassName = item.findElements('SCLASSNAME').single.innerText;
         final price = item.findElements('AVGPRICE').single.innerText;
         final marketName = item.findElements('MARKETNAME').single.innerText;
         final weight = item.findElements('UNITNAME').single.innerText;
 
-        print('날짜 : $date, 품종 : $mClassname, 가격 : $price, 마켓이름 : $marketName, 무게 : $weight');
+        // print('날짜 : $date, 품종 : $sClassName, 가격 : $price, 마켓이름 : $marketName, 무게 : $weight');
         
         apiModel.add(
           {
             'date' : date,
-            'mClassname' : mClassname,
+            'sClassName' : sClassName,
             'price' : price,
             'marketName' : marketName,
             'weight' : weight,
@@ -47,6 +51,7 @@ class NapaCabbageAPI extends GetxController {
     loopStatus = true;
     update();
   }
+
 
 
 }
