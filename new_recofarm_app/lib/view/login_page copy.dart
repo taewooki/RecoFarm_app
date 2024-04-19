@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:math';
 
 class PhoneAuthTest extends StatefulWidget {
   @override
@@ -13,15 +14,24 @@ class _PhoneAuthTestState extends State<PhoneAuthTest> {
   TextEditingController verifyPasswordController = TextEditingController();
 
   FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  Random random = Random();
 
   bool showLoading = false;
+
+  // 사용자의 이메일을 난수로 처리하여 반환하는 함수
+  String generateRandomEmail(String email) {
+    String randomString = email.substring(0, email.indexOf('@')) +
+        random.nextInt(10000).toString() +
+        '@example.com';
+    return randomString;
+  }
 
   Future<void> signUpUserWithEmailAndPassword(
       BuildContext context, String email, String password) async {
     try {
       // Firebase에 사용자 등록을 먼저 수행합니다.
       await _firebaseAuth.createUserWithEmailAndPassword(
-        email: email,
+        email: generateRandomEmail(email), // 이메일을 난수로 처리합니다.
         password: password,
       );
 
@@ -47,20 +57,42 @@ class _PhoneAuthTestState extends State<PhoneAuthTest> {
       setState(() {
         showLoading = false;
       });
-    } on FirebaseAuthException catch (error) {
+
+      // 사용자의 인증 상태를 감시하고 이메일이 확인되면 사용자의 이메일을 업데이트합니다.
+      FirebaseAuth.instance.authStateChanges().listen((User? user) {
+        if (user != null && user.emailVerified) {
+          // 이메일 주소를 업데이트합니다.
+          user.verifyBeforeUpdateEmail(email).then((_) {
+            // 이메일 주소 업데이트 완료 메시지 표시
+            Fluttertoast.showToast(
+              msg: "이메일 주소가 확인되었습니다.",
+              toastLength: Toast.LENGTH_SHORT,
+              timeInSecForIosWeb: 1,
+              backgroundColor: Colors.green,
+              fontSize: 16.0,
+            );
+          }).catchError((error) {
+            print("이메일 주소 업데이트 오류: $error");
+          });
+        }
+      });
+    } catch (error) {
+      // 예외 처리
       setState(() {
         showLoading = false;
       });
 
       String errorMessage = "회원 가입 중 오류가 발생했습니다.";
-      if (error.code == 'weak-password') {
-        errorMessage = "비밀번호 보안 수준이 낮습니다.";
-      } else if (error.code == 'email-already-in-use') {
-        errorMessage = "이미 사용 중인 이메일 주소입니다.";
-      } else if (error.code == 'invalid-email') {
-        errorMessage = "유효하지 않은 이메일 주소입니다.";
-      } else {
-        errorMessage = "오류: ${error.message}";
+      if (error is FirebaseAuthException) {
+        if (error.code == 'weak-password') {
+          errorMessage = "비밀번호 보안 수준이 낮습니다.";
+        } else if (error.code == 'email-already-in-use') {
+          errorMessage = "이미 사용 중인 이메일 주소입니다.";
+        } else if (error.code == 'invalid-email') {
+          errorMessage = "유효하지 않은 이메일 주소입니다.";
+        } else {
+          errorMessage = "오류: ${error.message}";
+        }
       }
 
       Fluttertoast.showToast(

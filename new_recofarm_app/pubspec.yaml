@@ -30,6 +30,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   provider: ^6.1.2
+  shared_preferences: ^2.2.3
 
 
   # Card
@@ -49,12 +50,24 @@ dependencies:
   firebase_auth: ^4.19.2
   fluttertoast: ^8.2.5
 
+  ## SQLite
+  sqflite: ^2.3.3
+
   ##GPS
   geocoding: ^2.0.0
   geolocator: ^11.0.0
   flutter_map: ^6.1.0
   latlong2: ^0.9.1
   xml: ^6.5.0
+
+  location: ^6.0.1
+  google_maps_flutter: ^2.6.1
+  flutter_polyline_points: ^2.0.0
+
+
+  ## Chart
+  syncfusion_flutter_charts: ^25.1.40
+
   
   ## Global language setting 
   flutter_localizations:
