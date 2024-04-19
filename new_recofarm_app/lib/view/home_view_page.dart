@@ -45,7 +45,7 @@ class HomeViewPage extends StatelessWidget {
           )
         ],
       ),
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
       body: SingleChildScrollView(
         child: StreamBuilder<QuerySnapshot>(
           stream: UserFirebase().selectUserEqaulPhone('01022842745'),
@@ -210,8 +210,11 @@ class HomeViewPage extends StatelessWidget {
                                 ),
                                 Row(
                                   children: [
+                                    const Text(
+                                      '출처 : 농림축산식품 공공데이터포털'
+                                    ),
                                     const SizedBox(
-                                      width: 270,
+                                      width: 80,
                                     ),
                                     TextButton(
                                       onPressed: () => Get.to(const DetailCabbage()),
@@ -233,6 +236,7 @@ class HomeViewPage extends StatelessWidget {
                         ),
                       ],
                     ),
+                    
                   ],
                 ),
               );

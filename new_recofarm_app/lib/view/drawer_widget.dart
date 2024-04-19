@@ -60,19 +60,37 @@ class DrawerWidget extends StatelessWidget {
                 title: const Text('Home'),
                 onTap: () => {print('home')},
               ),
-              const ListTile(
-                leading: Icon(
+              ListTile(
+                leading: const Icon(
+                  Icons.home,
+                  color: Colors.red,  
+                ),
+                title: const Text('예측'),
+                onTap: () => {print('')},
+              ),
+              ListTile(
+                leading: const Icon(
                   Icons.settings,
                   color: Colors.blue,
                 ),
-                title: Text('설정')
+                title: Text('설정'),
+                onTap: () => {print('home')},
               ),
-              const ListTile(
-                leading: Icon(
+              ListTile(
+                leading: const Icon(
                   Icons.question_answer,
                   color: Colors.orange,
                 ),
-                title: Text('자주 묻는 질문')
+                title: Text('공지사항'),
+                onTap: () => {print('home')},
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.exit_to_app,
+                  color: Colors.black,
+                ),
+                title: Text('로그아웃'),
+                onTap: () => {print('home')},
               )
             ], // children
           );
