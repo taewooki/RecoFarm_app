@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:new_recofarm_app/firebase_options.dart';
+import 'package:new_recofarm_app/view/find_my_password.dart';
 import 'package:new_recofarm_app/view/register_page.dart';
 import 'package:new_recofarm_app/view/splash_screen.dart';
 import 'view/home.dart';
@@ -80,7 +81,13 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/register',
           page: () => const RegisterPage(),
-          transition: Transition.zoom,
+          transition: Transition.fadeIn,
+          transitionDuration: const Duration(seconds :1)
+        ),
+        GetPage(
+          name: '/findPw',
+          page: () => const FindPasswordPage(),
+          transition: Transition.downToUp,
           transitionDuration: const Duration(seconds :1)
         ),
       ],

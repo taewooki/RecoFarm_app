@@ -88,8 +88,8 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       body: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(20.0),
+          Container(
+            color: Theme.of(context).colorScheme.onInverseSurface,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -155,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 SizedBox(height: 20),
-
+            
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -164,7 +164,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         // 회원 가입 페이지로 이동
                         Get.toNamed(
                           '/register'
-                          
+            
                         );
                       },
                       style: ElevatedButton.styleFrom(
@@ -176,8 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Color.fromARGB(255, 78, 101, 121)
                       ),),
                     ),
-
-                    SizedBox(width: 20,),
+                    SizedBox(width: 10,),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           shape: const RoundedRectangleBorder(
@@ -188,10 +187,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         setState(() {
                           showLoading = true;
                         });
-
+            
                         String userId = userIdController.text.trim();
                         String userPw = userPwController.text.trim();
-
+            
                         if (userId.isEmpty || userPw.isEmpty) {
                           Fluttertoast.showToast(
                             msg: "아이디와 비밀번호를 입력해 주세요.",
@@ -206,14 +205,37 @@ class _LoginScreenState extends State<LoginScreen> {
                           return;
                         }
                         // my SQL 로그인 
-
+            
                         await mySQL_login(userId,userPw);
                         // Firebase에 이메일과 비밀번호로 로그인
                         await signInWithEmailAndPassword(userId, userPw);
                       },
                     ),
+            
+                    SizedBox(width: 10,),
+            
+                    ElevatedButton(
+                      onPressed: () {
+                        // 비밀번호찾기 페이지로 이동 
+                        Get.toNamed(
+                          '/findPw'
+                          
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15)))),
+                      child: const Text('비밀번호찾기',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 65, 154, 9)
+                      ),),
+                    ),
+            
+                    
                   ],
                 ),
+                Image.asset("images/naver/btnW_아이콘원형.png")
               ],
             ),
           ),
