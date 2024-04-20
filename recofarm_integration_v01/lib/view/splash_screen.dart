@@ -23,15 +23,18 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  late Timer _timer;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer.periodic(Duration(seconds: 2), (timer) {
+    _timer= Timer.periodic(Duration(seconds: 2), (timer) {
       Get.to(Home());
+      _timer.cancel();
      });
   }
+  
   @override
   Widget build(BuildContext context) {
     return Center(
