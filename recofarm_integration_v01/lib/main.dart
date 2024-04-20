@@ -69,6 +69,16 @@ class MyApp extends StatelessWidget {
       ),
 
       home: SplashScreen(),
+      getPages: [
+        GetPage(
+          name: '/home',
+          page: () => const Home(),
+          transition: Transition.circularReveal,
+          transitionDuration: const Duration(seconds :1)
+        ),
+      ],
+
+
     );
   }
 }// END

@@ -59,20 +59,18 @@ class _SplashScreenState extends State<SplashScreen> {
       if (nextpage == null) {
         return;
       }
-      if (nextpage == 2) {
+      if (nextpage == 1) {
         // splash 화면이 다되면 메인으로 넘어감.
-        Get.to(
-          Home(),
-          transition: Transition.fade,
-          curve: Curves.bounceOut,
-          duration: Duration(seconds: 2),
+        Get.toNamed(
+          "/home",
         );
         _timer.cancel();
       } else {
         nextpage++;
       }
       pageController.animateToPage(nextpage,
-          duration: Duration(milliseconds: 700), curve: Curves.bounceOut);
+          duration: Duration(milliseconds: 700), 
+          curve: Curves.easeIn);
     });
   }
 
@@ -138,9 +136,9 @@ class _SplashScreenState extends State<SplashScreen> {
               child: Column(
                 children: [
                    SizedBox( 
-                    height:MediaQuery.of(context).size.height*0.15 ,),
+                    height:MediaQuery.of(context).size.height*0.25 ,),
                   SizedBox(
-                    height: 300,
+                    height: 400,
                     child: Column(
                      // mainAxisAlignment: MainAxisAlignment.start,
                       //crossAxisAlignment: CrossAxisAlignment.center,
@@ -148,7 +146,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         Image.asset(
                         
                           "images/splash_03.png",
-                          fit: BoxFit.cover,
+                          height: 300,
                         ),
                         const SizedBox( height: 30,),
                         SizedBox(

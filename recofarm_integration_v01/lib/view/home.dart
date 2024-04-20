@@ -36,25 +36,26 @@ class Home extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
 
 
             ElevatedButton(
               onPressed: () => Get.to(InterArea()), 
-              child: const Text("나의 관심 농작지")),
+              child: const Text("=> 나의 관심 농작지")),
 
             ElevatedButton(
               onPressed: () => Get.to(FindPasswordPage()), 
-              child: const Text("비밀번호 찾기")),
+              child: const Text("=> 비밀번호 찾기")),
 
             ElevatedButton(
               onPressed: () => Get.to(RegisterPage()), 
-              child: const Text('회원가입(mySQL ver)')),
+              child: const Text('=> 회원가입(mySQL ver)')),
 
             ElevatedButton(
               onPressed:()=> Get.to(RegisterPage()), 
-              child: const Text("회원가입(FireBasee ver)")),
+              child: const Text("=> 회원가입(FireBasee ver)")),
             
             ElevatedButton(
                 onPressed: () {
@@ -65,14 +66,14 @@ class Home extends StatelessWidget {
                   );
                 },
                 // Get 경로 알아서 하시면 됩니다. home.dart는 스플래시 화면 및 로그인 메뉴로 만들 생각입니다
-                child: const Text('Login')),
+                child: const Text('=> Login')),
             ElevatedButton(
                 onPressed: () => Get.to(const MainView()),
-                child: const Text('main')),
+                child: const Text('=> main')),
 
             ElevatedButton(
               onPressed: () => Get.to( WebViewPage()), 
-              child: const Text("Webview"))
+              child: const Text("=> WebView"))
           ],
         ),
       ),
