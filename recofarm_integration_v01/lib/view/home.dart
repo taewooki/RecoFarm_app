@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:new_recofarm_app/view/find_my_password.dart';
+import 'package:new_recofarm_app/view/interesting_area.dart';
 import 'package:new_recofarm_app/view/login.dart';
 import 'package:new_recofarm_app/view/login_page.dart';
 import 'package:new_recofarm_app/view/mainview.dart';
@@ -16,7 +18,9 @@ import 'web_view_page.dart';
   Date        : 2024-04-17 13:33
   Author      : lcy
   Updates     : 
-  Detail      : - 
+  Detail      : 
+    -2024.04.20 by pdg
+      회원가입 페이지 및 로그인 페이지 추가  
 
 */
 
@@ -33,14 +37,32 @@ class Home extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () => Get.to(RegisterPage()), 
-              child: const Text('회원가입')),
+
+
 
             ElevatedButton(
+              onPressed: () => Get.to(InterArea()), 
+              child: const Text("나의 관심 농작지")),
+
+            ElevatedButton(
+              onPressed: () => Get.to(FindPasswordPage()), 
+              child: const Text("비밀번호 찾기")),
+
+            ElevatedButton(
+              onPressed: () => Get.to(RegisterPage()), 
+              child: const Text('회원가입(mySQL ver)')),
+
+            ElevatedButton(
+              onPressed:()=> Get.to(RegisterPage()), 
+              child: const Text("회원가입(FireBasee ver)")),
+            
+            ElevatedButton(
                 onPressed: () {
-                  // Login Page
-                  Get.to(LoginScreen());
+                  // Login Page by pdg
+                  Get.to(LoginScreen(),
+                    transition: Transition.circularReveal,
+                    
+                  );
                 },
                 // Get 경로 알아서 하시면 됩니다. home.dart는 스플래시 화면 및 로그인 메뉴로 만들 생각입니다
                 child: const Text('Login')),

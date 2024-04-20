@@ -109,19 +109,19 @@ flutter:
 
     - family: parisienne
       fonts:
-        - asset: asset/fonts/Parisienne-Regular.ttf
+        - asset: assets/fonts/Parisienne-Regular.ttf
     
     - family: Dongle
       fonts:
-        - asset: asset/fonts/Dongle-Bold.ttf
-        - asset: asset/fonts/Dongle-Light.ttf
-        - asset: asset/fonts/Dongle-Regular.ttf
+        - asset: assets/fonts/Dongle-Bold.ttf
+        - asset: assets/fonts/Dongle-Light.ttf
+        - asset: assets/fonts/Dongle-Regular.ttf
           weight : 700
     - family: Sunflower
       fonts:
-        - asset: asset/fonts/Sunflower-Bold.ttf
-        - asset: asset/fonts/Sunflower-Light.ttf
-        - asset: asset/fonts/Sunflower-Medium.ttf
+        - asset: assets/fonts/Sunflower-Bold.ttf
+        - asset: assets/fonts/Sunflower-Light.ttf
+        - asset: assets/fonts/Sunflower-Medium.ttf
           weight : 700
 
   #

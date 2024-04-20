@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
   * Updates     : 
   *   2024.04.20 by pdg
         - 기존 회원가입페이지 정상화 
+        - shared preference fh fhrmdls gka. 
 
 */
 class RegisterPage extends StatefulWidget {
@@ -61,6 +62,7 @@ class _RegisterPageState extends State<RegisterPage>
   }
 
   disposeSharedPreferences() async {
+    // shared preference instance 생성 
     final prefs = await SharedPreferences.getInstance();
     prefs.clear();
   }
