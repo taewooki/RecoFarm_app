@@ -4,6 +4,7 @@ import 'package:get/route_manager.dart';
 import 'package:new_recofarm_app/view/login.dart';
 import 'package:new_recofarm_app/view/login_page.dart';
 import 'package:new_recofarm_app/view/mainview.dart';
+import 'package:new_recofarm_app/view/register_page.dart';
 
 import 'web_view_page.dart';
 
@@ -32,6 +33,10 @@ class Home extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            ElevatedButton(
+              onPressed: () => Get.to(RegisterPage()), 
+              child: const Text('회원가입')),
+
             ElevatedButton(
                 onPressed: () {
                   // Login Page
