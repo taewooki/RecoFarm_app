@@ -45,7 +45,7 @@ class Home extends StatelessWidget {
 
             ElevatedButton(
               onPressed: () => Get.to(const WebViewPage()), 
-              child: "Webview")
+              child: const Text("Webview"))
           ],
         ),
       ),
