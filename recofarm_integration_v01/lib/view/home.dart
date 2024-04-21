@@ -21,6 +21,8 @@ import 'web_view_page.dart';
   Detail      : 
     -2024.04.20 by pdg
       회원가입 페이지 및 로그인 페이지 추가  
+    -2024.04.21 by pdg
+      내 관심 소재지 등록 페이지 추가 
 
 */
 
@@ -45,7 +47,7 @@ class Home extends StatelessWidget {
 
 
             ElevatedButton(
-              onPressed: () => Get.to(InterArea()), 
+              onPressed: () => Get.to(InterestingAreaPage()), 
               child: const Text("=> 나의 관심 농작지")),
 
             ElevatedButton(
