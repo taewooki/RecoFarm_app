@@ -19,6 +19,8 @@ import 'view/home.dart';
   *     - debug mode flag 없앰
       2024.04.20 by pdg
         - splash screen 
+      204.04.21 by pdg
+        - 주석추가 
   *
 */
 
@@ -26,7 +28,7 @@ void main() async {
   //플러터 프레임 워크가 앱을 실행할 준비가 될때 까지 기다림 
   WidgetsFlutterBinding.ensureInitialized();
 
-  // F
+  // Fire base init
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -75,6 +77,14 @@ class MyApp extends StatelessWidget {
 
       home: SplashScreen(),
       getPages: [
+
+        GetPage(
+          // Login page 으로 이동
+          name: '/login',
+          page: () => const Home(),
+          transition: Transition.circularReveal,
+          transitionDuration: const Duration(seconds :1)
+        ),
         GetPage(
           // home 으로 이동
           name: '/home',

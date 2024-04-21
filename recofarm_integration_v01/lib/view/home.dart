@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:new_recofarm_app/view/find_my_password.dart';
 import 'package:new_recofarm_app/view/interesting_area.dart';
-import 'package:new_recofarm_app/view/login.dart';
+import 'package:new_recofarm_app/view/login_page.dart';
 import 'package:new_recofarm_app/view/login_page.dart';
 import 'package:new_recofarm_app/view/mainview.dart';
 import 'package:new_recofarm_app/view/register_page.dart';
@@ -63,7 +63,7 @@ class Home extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   // Login Page by pdg
-                  Get.to(LoginScreen(),
+                  Get.to(LoginPage(),
                     transition: Transition.circularReveal,
                     
                   );
